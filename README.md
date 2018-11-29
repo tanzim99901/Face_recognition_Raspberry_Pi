@@ -1,6 +1,7 @@
 # Facial Recognition on Raspberry Pi
 
 Detect and identify faces on image files using python by training the machine beforehand. Tested on Raspberry Pi, macOS and Linux using Python 3.7
+Live facial recognition from Raspberry Pi camera coming soon..
 
 # Dependencies
 1) numpy
@@ -20,7 +21,7 @@ Detailed instructions on how to install and use the library has already been pro
 # Procedure
 (Tested with only one user for now)
 
-1) Store the known images that will be used to train the machine in the "training_img" folder (make sure each image has only ONE face).
+1) Store the known images that will be used to train the machine in the "training_img" folder (make sure each image has only ONE face each).
 2) Keep a "trained_data" folder in the same directory.
 3) Run the "training.py" program from the command line.
 4) After training is complete, there should be some data files in the "trained_data" folder.
