@@ -1,8 +1,17 @@
 import face_recognition
 import cv2
 import sys
+import glob
 
-load_img = ["tanz1.jpg", "tanz2.jpg", "tanz3.jpg", "tanz4.jpg", "tanz5.jpg", "tanz6.jpg", "tanz7.jpg", "tanz8.jpg", "tanz9.jpg"] 
+load_img = glob.glob("training_img/*.jpg")
+
+i = 0
+while (i <= (len(load_img) - 1)):
+    load_img[i] = load_img[i].replace("training_img/", "")
+    i += 1
+
+i = 0
+#load_img = ["tanz1.jpg", "tanz2.jpg", "tanz3.jpg", "tanz4.jpg", "tanz5.jpg", "tanz6.jpg", "tanz7.jpg", "tanz8.jpg", "tanz9.jpg"] 
 
 counter = 0
 while (counter <= (len(load_img) - 1)):

@@ -2,17 +2,27 @@ import face_recognition
 import numpy as np
 import cv2
 import sys
+import glob
 
 affirmative = ['y','yes','sure','ok','okay','yeah','ya','Y','YES','SURE','OK','OKAY','YEAH','YA']
 negative = ['n','no','not sure','na','nah','nope','N','NO','NOT SURE','NA','NOPE','NAH']
 users = ["Tanzim", "Miraj"]
 
 tolerance = 1
-tanz_array = ["tanz1.txt", "tanz2.txt", "tanz3.txt", "tanz4.txt", "tanz5.txt", "tanz6.txt", "tanz7.txt", "tanz8.txt", "tanz9.txt"] 
+trained_array = glob.glob("trained_data/*.txt")
+i = 0
+while (i <= (len(trained_array) - 1)):
+    trained_array[i] = trained_array[i].replace("trained_data/", "")
+    i += 1
+i = 0
+
+#trained_array = ["tanz1.txt", "tanz2.txt", "tanz3.txt", "tanz4.txt", "tanz5.txt", "tanz6.txt", "tanz7.txt", "tanz8.txt", "tanz9.txt"] 
+
+
 
 counter = 0
-while (counter <= (len(tanz_array) - 1)):
-    tanz_array[counter] = "trained_data/" + tanz_array[counter]
+while (counter <= (len(trained_array) - 1)):
+    trained_array[counter] = "trained_data/" + trained_array[counter]
     counter += 1
 
 x = 1
@@ -20,6 +30,17 @@ x = 1
 while x == 1:
     face_locations = []
     unknown_face_encoding = []
+    t = []
+    encoding = []
+    t = trained_array[:]
+    encoding = trained_array[:]
+    
+    j = 0
+    while (j <= (len(trained_array) - 1)):
+        t[j] = ""
+        encoding[j] = 0
+        j += 1
+    j = 0
     try:
         ans = str(input("Do you want to start?\n"))
         if ans in affirmative:
@@ -41,7 +62,16 @@ while x == 1:
                     quit()
             
                 print("\nNew Image encoded")
-            
+                
+                i = 0
+                while (i <= (len(trained_array) - 1)):
+                    fr = open(trained_array[i], 'r')
+                    t[i] = fr.read()
+                    encoding[i] = np.fromstring(t[i], dtype=np.float, sep = ' ')
+                    fr.close()
+                    i += 1
+                i = 0
+                '''
                 fr = open(tanz_array[0], 'r')
                 tanz1 = fr.read()
                 tanzim_face_encoding1 = np.fromstring(tanz1, dtype=np.float, sep = ' ')
@@ -86,9 +116,11 @@ while x == 1:
                 tanz9 = fr.read()
                 tanzim_face_encoding9 = np.fromstring(tanz9, dtype=np.float, sep = ' ')
                 fr.close()
-            
+                '''
+                
                 print("\nTrained Files read\n")
                 print("Comparing...\n")
+                '''
                 known_faces = [
                     tanzim_face_encoding1,
                     tanzim_face_encoding2,
@@ -100,7 +132,8 @@ while x == 1:
                     tanzim_face_encoding8,
                     tanzim_face_encoding9,
                 ]
-                
+                '''
+                known_faces = encoding[:]
                 test_var = 0
                 recog = 0 
                 detection = -1
@@ -122,7 +155,7 @@ while x == 1:
                         i += 1
                     counter[test_var] = k
                     if (counter[test_var] >= max(counter)):
-                        if counter[test_var] >= (len(tanz_array) - tolerance):
+                        if counter[test_var] >= (len(trained_array) - tolerance):
                             recog = 1
                             detection = test_var
                             print(users[0] + " Detected")
