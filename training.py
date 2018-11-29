@@ -11,7 +11,6 @@ while (i <= (len(load_img) - 1)):
     i += 1
 
 i = 0
-#load_img = ["tanz1.jpg", "tanz2.jpg", "tanz3.jpg", "tanz4.jpg", "tanz5.jpg", "tanz6.jpg", "tanz7.jpg", "tanz8.jpg", "tanz9.jpg"] 
 
 counter = 0
 while (counter <= (len(load_img) - 1)):
@@ -69,7 +68,7 @@ while (i <= (len(face_img) - 1)):
     f[i] = str(face_img[i])
     f[i] = f[i].replace("[", "")
     f[i] = f[i].replace("]", "")
-    filename = "trained_data/tanz{0}.txt".format(i+1)
+    filename = "trained_data/data{0}.txt".format(i+1)
     fw = open(filename, "w")
     fw.write(str(f[i]))
     fw.close()

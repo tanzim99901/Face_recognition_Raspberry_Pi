@@ -16,10 +16,6 @@ while (i <= (len(trained_array) - 1)):
     i += 1
 i = 0
 
-#trained_array = ["tanz1.txt", "tanz2.txt", "tanz3.txt", "tanz4.txt", "tanz5.txt", "tanz6.txt", "tanz7.txt", "tanz8.txt", "tanz9.txt"] 
-
-
-
 counter = 0
 while (counter <= (len(trained_array) - 1)):
     trained_array[counter] = "trained_data/" + trained_array[counter]
@@ -71,68 +67,9 @@ while x == 1:
                     fr.close()
                     i += 1
                 i = 0
-                '''
-                fr = open(tanz_array[0], 'r')
-                tanz1 = fr.read()
-                tanzim_face_encoding1 = np.fromstring(tanz1, dtype=np.float, sep = ' ')
-                fr.close()
-            
-                fr = open(tanz_array[1], 'r')
-                tanz2 = fr.read()
-                tanzim_face_encoding2 = np.fromstring(tanz2, dtype=np.float, sep = ' ')
-                fr.close()
-            
-                fr = open(tanz_array[2], 'r')
-                tanz3 = fr.read()
-                tanzim_face_encoding3 = np.fromstring(tanz3, dtype=np.float, sep = ' ')
-                fr.close()
-            
-                fr = open(tanz_array[3], 'r')
-                tanz4 = fr.read()
-                tanzim_face_encoding4 = np.fromstring(tanz4, dtype=np.float, sep = ' ')
-                fr.close()
-            
-                fr = open(tanz_array[4], 'r')
-                tanz5 = fr.read()
-                tanzim_face_encoding5 = np.fromstring(tanz5, dtype=np.float, sep = ' ')
-                fr.close()
-            
-                fr = open(tanz_array[5], 'r')
-                tanz6 = fr.read()
-                tanzim_face_encoding6 = np.fromstring(tanz6, dtype=np.float, sep = ' ')
-                fr.close()
-            
-                fr = open(tanz_array[6], 'r')
-                tanz7 = fr.read()
-                tanzim_face_encoding7 = np.fromstring(tanz7, dtype=np.float, sep = ' ')
-                fr.close()
-            
-                fr = open(tanz_array[7], 'r')
-                tanz8 = fr.read()
-                tanzim_face_encoding8 = np.fromstring(tanz8, dtype=np.float, sep = ' ')
-                fr.close()
-            
-                fr = open(tanz_array[8], 'r')
-                tanz9 = fr.read()
-                tanzim_face_encoding9 = np.fromstring(tanz9, dtype=np.float, sep = ' ')
-                fr.close()
-                '''
                 
                 print("\nTrained Files read\n")
                 print("Comparing...\n")
-                '''
-                known_faces = [
-                    tanzim_face_encoding1,
-                    tanzim_face_encoding2,
-                    tanzim_face_encoding3,
-                    tanzim_face_encoding4,
-                    tanzim_face_encoding5,
-                    tanzim_face_encoding6,
-                    tanzim_face_encoding7,
-                    tanzim_face_encoding8,
-                    tanzim_face_encoding9,
-                ]
-                '''
                 known_faces = encoding[:]
                 test_var = 0
                 recog = 0 
