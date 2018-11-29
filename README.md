@@ -1,1 +1,2 @@
-# Face_recognition_Raspberry_Pi
+# Facial Recognition on Raspberry Pi
+
