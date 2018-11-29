@@ -1,6 +1,7 @@
 # Facial Recognition on Raspberry Pi
 
 Detect and identify faces on image files using python by training the machine beforehand. Tested on Raspberry Pi, macOS and Linux using Python 3.7
+
 Live facial recognition from Raspberry Pi camera coming soon..
 
 # Dependencies
