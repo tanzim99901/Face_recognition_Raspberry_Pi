@@ -9,7 +9,7 @@ negative = ['n','no','not sure','na','nah','nope','N','NO','NOT SURE','NA','NOPE
 users = ["Tanzim", "Miraj"]
 
 tolerance = 1
-trained_array = glob.glob("trained_data/*.txt")
+trained_array = glob.glob("trained_data/data*")
 i = 0
 while (i <= (len(trained_array) - 1)):
     trained_array[i] = trained_array[i].replace("trained_data/", "")
