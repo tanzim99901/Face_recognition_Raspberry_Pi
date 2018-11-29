@@ -19,6 +19,12 @@ Link: https://github.com/ageitgey/face_recognition
 
 Detailed instructions on how to install and use the library has already been provided on the previous link. 
 
+# OpenCV library
+
+Follow the instruction here to install the OpenCV library on your Raspberry Pi: http://www.deciphertechnic.com/install-opencv-python-on-raspberry-pi/
+
+(Should take about 2-3 hours on a Raspberry Pi)
+
 # Procedure
 (Tested with only one user for now)
 
