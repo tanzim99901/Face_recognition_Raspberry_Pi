@@ -114,7 +114,7 @@ while x == 1:
                     if (detection > -1):
                         if (recog == 1):
                             if (face_len == detection):
-                                cv2.putText(image, users[0], (face_locations[face_len][3], face_locations[face_len][2]), font, 0.8, (0,255,2), 2)
+                                cv2.putText(image, users[0], (face_locations[face_len][3], face_locations[face_len][2] + 20), font, 0.8, (0,255,2), 2)
                     face_len += 1
                 print("Completed!\n")
                 cv2.imshow("Faces found", image)
