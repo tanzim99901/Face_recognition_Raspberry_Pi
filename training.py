@@ -6,14 +6,14 @@ import glob
 load_img = glob.glob("training_img/*.jpg")
 
 i = 0
-while (i <= (len(load_img) - 1)):
+while i <= (len(load_img) - 1):
     load_img[i] = load_img[i].replace("training_img/", "")
     i += 1
 
 i = 0
 
 counter = 0
-while (counter <= (len(load_img) - 1)):
+while counter <= (len(load_img) - 1):
     load_img[counter] = "training_img/" + load_img[counter]
     counter += 1
 
@@ -27,7 +27,7 @@ f = load_img[:]
 
 counter = 0
 
-while (counter <= (len(load_img)-1)):
+while counter <= (len(load_img)-1):
     loaded_img[counter] = 0
     encoded_img[counter] = 0
     f[counter] = 0
@@ -36,7 +36,7 @@ while (counter <= (len(load_img)-1)):
 
 i = 0
 
-while (i <= (len(load_img) - 1)):
+while i <= (len(load_img) - 1):
     loaded_img[i] = face_recognition.load_image_file(load_img[i])
     
     
@@ -48,12 +48,12 @@ print("Encoding...\n")
 try:
     i = 0
     
-    while (i <= (len(loaded_img) - 1)):
+    while i <= (len(loaded_img) - 1):
         print("Encoding image {0}... \n".format(i+1))
         encoded_img[i] = face_recognition.face_encodings(loaded_img[i])
         i += 1
     i = 0
-    while (i <= (len(encoded_img) - 1)):
+    while i <= (len(encoded_img) - 1):
         face_img[i] = encoded_img[i][0]
         i += 1
 except IndexError:
@@ -64,7 +64,7 @@ print("Creating training files...\n")
 
 i = 0
 
-while (i <= (len(face_img) - 1)):
+while i <= (len(face_img) - 1):
     f[i] = str(face_img[i])
     f[i] = f[i].replace("[", "")
     f[i] = f[i].replace("]", "")
