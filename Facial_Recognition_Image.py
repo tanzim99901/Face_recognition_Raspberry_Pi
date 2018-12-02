@@ -11,32 +11,42 @@ users = ["Tanzim", "Miraj"]
 tolerance = 1
 trained_array = glob.glob("trained_data/data*")
 i = 0
-while (i <= (len(trained_array) - 1)):
+while i <= (len(trained_array) - 1):
     trained_array[i] = trained_array[i].replace("trained_data/", "")
     i += 1
 i = 0
 
 counter = 0
-while (counter <= (len(trained_array) - 1)):
+while counter <= (len(trained_array) - 1):
     trained_array[counter] = "trained_data/" + trained_array[counter]
     counter += 1
+t = []
+encoding = []
+t = trained_array[:]
+encoding = trained_array[:]
 
-x = 1
+j = 0
+while j <= (len(trained_array) - 1):
+    t[j] = ""
+    encoding[j] = 0
+    j += 1
+j = 0
 
-while x == 1:
+i = 0
+while (i <= (len(trained_array) - 1)):
+    fr = open(trained_array[i], 'r')
+    t[i] = fr.read()
+    encoding[i] = np.fromstring(t[i], dtype=np.float, sep = ' ')
+    fr.close()
+    i += 1
+i = 0
+
+known_faces = encoding[:]
+    
+while True:
     face_locations = []
     unknown_face_encoding = []
-    t = []
-    encoding = []
-    t = trained_array[:]
-    encoding = trained_array[:]
-    
-    j = 0
-    while (j <= (len(trained_array) - 1)):
-        t[j] = ""
-        encoding[j] = 0
-        j += 1
-    j = 0
+  
     try:
         ans = str(input("Do you want to start?\n"))
         if ans in affirmative:
@@ -59,18 +69,7 @@ while x == 1:
             
                 print("\nNew Image encoded")
                 
-                i = 0
-                while (i <= (len(trained_array) - 1)):
-                    fr = open(trained_array[i], 'r')
-                    t[i] = fr.read()
-                    encoding[i] = np.fromstring(t[i], dtype=np.float, sep = ' ')
-                    fr.close()
-                    i += 1
-                i = 0
-                
-                print("\nTrained Files read\n")
                 print("Comparing...\n")
-                known_faces = encoding[:]
                 test_var = 0
                 recog = 0 
                 detection = -1
