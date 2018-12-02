@@ -10,6 +10,7 @@ Detect and identify faces on image files using python by training the machine be
 3) sys
 4) glob
 5) face_recognition
+6) picamera
 
 # face_recognition Library
 
@@ -26,6 +27,7 @@ Follow the instruction here to install the OpenCV library on your Raspberry Pi: 
 (Should take about 2-3 hours on a Raspberry Pi)
 
 # Procedure
+# Facial Recognition from image file
 (Tested with only one user for now)
 
 1) Store the known images that will be used to train the machine in the "training_img" folder (make sure each image has only ONE face each).
@@ -35,4 +37,12 @@ Follow the instruction here to install the OpenCV library on your Raspberry Pi: 
 5) Store the unknown images you want to test the machine with in the "unknown_img" folder.
 6) Run the "Facial_Recognition_Full.py" program from the command line.
 7) Follow the instructions. When asked for an image name, type in the name of any image file in the "unknown_img" folder that you want to test. 
-8) Voila! There you have it. Face recognition completed!
+8) Voila! There you have it. Facial recognition completed!
+
+# Live Facial Recognition from Raspberry Pi camera
+
+1) Training is the same as steps 1-4 as before.
+2) Make sure the Camera is connected properly to the Raspberry Pi and it is enabled in the "Raspberry Pi Configuration".
+3) Run the "Live_Facial_recognition.py" program from the command line.
+4) Voila! Live facial recognition at your fingertips!
+
