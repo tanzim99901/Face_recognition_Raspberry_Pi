@@ -11,6 +11,7 @@ Detect and identify faces on image files using python by training the machine be
 4) glob
 5) face_recognition
 6) picamera
+7) os
 
 # face_recognition Library
 
@@ -32,10 +33,10 @@ Follow the instruction here to install the OpenCV library on your Raspberry Pi: 
 
 1) Store the known images that will be used to train the machine in the "training_img" folder (make sure each image has only ONE face each).
 2) Keep a "trained_data" folder in the same directory.
-3) Run the "training_one_user.py" program from the command line.
+3) Run the "training_one_user.py" program from the terminal.
 4) After training is complete, there should be some data files in the "trained_data" folder.
 5) Store the unknown images you want to test the machine with in the "unknown_img" folder.
-6) Run the "Facial_Recognition_Full.py" program from the command line.
+6) Run the "Facial_Recognition_Full.py" program from the terminal.
 7) Follow the instructions. When asked for an image name, type in the name of any image file in the "unknown_img" folder that you want to test. 
 8) Voila! There you have it. Facial recognition completed!
 
@@ -43,17 +44,17 @@ Follow the instruction here to install the OpenCV library on your Raspberry Pi: 
 
 1) Training is the same as steps 1-4 as before.
 2) Make sure the Camera is connected properly to the Raspberry Pi and it is enabled in the "Raspberry Pi Configuration".
-3) Run the "Live_Facial_recognition_one_user.py" program from the command line.
+3) Run the "Live_Facial_recognition_one_user.py" program from the terminal.
 4) Voila! Live facial recognition at your fingertips!
 
 # Live Facial Recognition from Raspberry Pi camera (DYNAMIC USERS)
 
 1) Store the images that will be used to train the machine in folders named "training_img_user1", "training_img_user2" and so on (one folder for each user).
 2) Keep folders named "trained_data_user1", "trained_data_user2" and so on in the same directory. (one for each user)
-3) Run the "training_dynamic.py" program from the command line. 
+3) Run the "training_dynamic.py" program from the terminal. 
 4) After training is complete, there should be some data files in each of the "trained_data_userX" folders.
 5) Make sure the Camera is connected properly to the Raspberry Pi and it is enabled in the "Raspberry Pi Configuration".
-6) Run the "Live_Facial_recognition_dynamic.py" program from the command line.
+6) Run the "Live_Facial_recognition_dynamic.py" program from the terminal.
 7) Voila! Live facial recognition at your fingertips!
 
 
