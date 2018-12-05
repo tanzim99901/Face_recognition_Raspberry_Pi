@@ -43,6 +43,6 @@ Follow the instruction here to install the OpenCV library on your Raspberry Pi: 
 
 1) Training is the same as steps 1-4 as before.
 2) Make sure the Camera is connected properly to the Raspberry Pi and it is enabled in the "Raspberry Pi Configuration".
-3) Run the "Live_Facial_recognition.py" program from the command line.
+3) Run the "Live_Facial_recognition_one_user.py" program from the command line.
 4) Voila! Live facial recognition at your fingertips!
 
