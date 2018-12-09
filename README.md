@@ -55,4 +55,10 @@ Follow the instruction here to install the OpenCV library on your Raspberry Pi: 
 5) Run the "Live_Facial_recognition_dynamic.py" program from the terminal.
 6) Voila! Live facial recognition at your fingertips!
 
+# Live Facial Recognition from Raspberry Pi camera with audio feedback (DYNAMIC USERS)
+
+1) Follow steps 1-4 as before
+2) Store .wav files to be played on detection of a face in the "audio" directory. The filenames should be same as the user names, i.e, if there are two users named "user1" and "user2", the .wav files should be named "user1.wav" and "user2.wav"
+5) Run the "Live_Facial_recognition_dynamic_with_audio_feedback.py" program from the terminal.
+6) Voila! Live facial recognition at your fingertips (AND with audio feedback)!
 
