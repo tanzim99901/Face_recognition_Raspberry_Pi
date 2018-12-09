@@ -1,4 +1,5 @@
 import face_recognition
+import pygame
 import picamera
 import numpy as np
 import cv2
@@ -145,6 +146,12 @@ while True:
         cv2.rectangle(output, (face_locations[face_len][3]*r_mul, face_locations[face_len][0]*r_mul), (face_locations[face_len][1]*r_mul, face_locations[face_len][2]*r_mul), (0, 255, 0), 2)
         if recog[face_len] == 1:
             cv2.putText(output, det_users[face_len], (face_locations[face_len][3]*r_mul, (face_locations[face_len][2]*r_mul + 20)), font, 0.8, (0,255,2), 2)
+            aud_dir = "audio/" + det_users[face_len] + ".wav"
+            pygame.mixer.music.load(aud_dir)
+            print("\nPlaying music...")
+            pygame.mixer.music.play()
+            while pygame.mixer.music.get_busy() == True:
+                continue
         face_len += 1
     print("Completed!\n")
     cv2.imshow("Faces found", output)
