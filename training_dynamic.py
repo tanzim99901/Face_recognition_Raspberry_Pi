@@ -91,6 +91,9 @@ print("Creating training files...\n")
 i = 0
 
 while i <= (len(face_img) - 1):
+    newpath = "trained_data_user{0}".format(i+1)
+    if not os.path.exists(newpath):
+        os.makedirs(newpath)
     j = 0
     while j <= (len(face_img[i]) - 1):
         f[i][j] = str(face_img[i][j])
