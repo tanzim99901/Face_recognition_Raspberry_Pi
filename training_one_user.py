@@ -62,6 +62,10 @@ except IndexError:
 
 print("Creating training files...\n")
 
+newpath = "trained_data"
+if not os.path.exists(newpath):
+    os.makedirs(newpath)
+
 i = 0
 
 while i <= (len(face_img) - 1):
