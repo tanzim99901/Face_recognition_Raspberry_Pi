@@ -3,28 +3,14 @@ import cv2
 import sys
 import glob
 
+# Load all training images filenames
 load_img = glob.glob("training_img/*.jpg")
 
-i = 0
-while i <= (len(load_img) - 1):
-    load_img[i] = load_img[i].replace("training_img/", "")
-    i += 1
-
-i = 0
-
-counter = 0
-while counter <= (len(load_img) - 1):
-    load_img[counter] = "training_img/" + load_img[counter]
-    counter += 1
-
+#Initialize all arrays
 loaded_img = load_img[:]
-
 encoded_img = load_img[:]
-
 face_img = load_img[:]
-
 f = load_img[:]
-
 counter = 0
 
 while counter <= (len(load_img)-1):
@@ -34,6 +20,7 @@ while counter <= (len(load_img)-1):
     face_img[counter] = 0
     counter += 1
 
+# Load each image into an array
 i = 0
 
 while i <= (len(load_img) - 1):
@@ -45,6 +32,8 @@ while i <= (len(load_img) - 1):
 print("Training images loaded\n")
 print("Encoding...\n")
 
+
+#Recognize faces and encode them into separate arrays for each image
 try:
     i = 0
     
@@ -60,6 +49,8 @@ except IndexError:
     print("I wasn't able to locate any faces in at least one of the images. Check the image files. Aborting...")
     quit()
 
+	
+#Save the encoding into separate files
 print("Creating training files...\n")
 
 newpath = "trained_data"
