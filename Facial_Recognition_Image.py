@@ -9,17 +9,9 @@ negative = ['n','no','not sure','na','nah','nope','N','NO','NOT SURE','NA','NOPE
 users = ["Tanzim", "Miraj"]
 
 tolerance = 1
-trained_array = glob.glob("trained_data/data*")
-i = 0
-while i <= (len(trained_array) - 1):
-    trained_array[i] = trained_array[i].replace("trained_data/", "")
-    i += 1
-i = 0
+trained_array = glob.glob("trained_data/data*")		# Load all trained data filenames 
 
-counter = 0
-while counter <= (len(trained_array) - 1):
-    trained_array[counter] = "trained_data/" + trained_array[counter]
-    counter += 1
+# Initialize all arrays
 t = []
 encoding = []
 t = trained_array[:]
@@ -32,6 +24,7 @@ while j <= (len(trained_array) - 1):
     j += 1
 j = 0
 
+# Open all encoding files
 i = 0
 while (i <= (len(trained_array) - 1)):
     fr = open(trained_array[i], 'r')
@@ -41,7 +34,7 @@ while (i <= (len(trained_array) - 1)):
     i += 1
 i = 0
 
-known_faces = encoding[:]
+known_faces = encoding[:]		# Initialize Known faces array
     
 while True:
     face_locations = []
@@ -61,7 +54,7 @@ while True:
                 print("\nNew Image Loaded")
                 print("\nProcessing...")
                 try:
-                    face_locations = face_recognition.face_locations(unknown_image)
+                    face_locations = face_recognition.face_locations(unknown_image)			# Detect faces on the unknown image
                     unknown_face_encoding = face_recognition.face_encodings(unknown_image)
                 except IndexError:
                     print("I wasn't able to locate any faces in at least one of the images. Check the image files. Aborting...")
@@ -79,7 +72,7 @@ while True:
                     counter[count_counter] = 0
                     count_counter += 1
                 while (test_var <= len(unknown_face_encoding) - 1):
-                    results = face_recognition.compare_faces(known_faces, unknown_face_encoding[test_var])
+                    results = face_recognition.compare_faces(known_faces, unknown_face_encoding[test_var])		# Compare faces in the unknown images with the known faces previously trained
                     print("Face number {0} :".format(test_var+1))
                     print(results)
                     i = 0
@@ -109,14 +102,14 @@ while True:
                 face_len = 0
                 print("Drawing rectangles on faces...\n")
                 while (face_len <= len(face_locations) - 1):
-                    cv2.rectangle(image, (face_locations[face_len][3], face_locations[face_len][0]), (face_locations[face_len][1], face_locations[face_len][2]), (0, 255, 0), 2)
+                    cv2.rectangle(image, (face_locations[face_len][3], face_locations[face_len][0]), (face_locations[face_len][1], face_locations[face_len][2]), (0, 255, 0), 2)		# Draw rectangle around faces
                     if (detection > -1):
                         if (recog == 1):
                             if (face_len == detection):
-                                cv2.putText(image, users[0], (face_locations[face_len][3], face_locations[face_len][2] + 20), font, 0.8, (0,255,2), 2)
+                                cv2.putText(image, users[0], (face_locations[face_len][3], face_locations[face_len][2] + 20), font, 0.8, (0,255,2), 2)		# Put names of detected faces below the corresponding rectangle
                     face_len += 1
                 print("Completed!\n")
-                cv2.imshow("Faces found", image)
+                cv2.imshow("Faces found", image)		#Display the image
                 cv2.waitKey(0)
                 cv2.destroyAllWindows()
                 continue
