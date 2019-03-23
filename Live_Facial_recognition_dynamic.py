@@ -10,6 +10,8 @@ r_mul = 2
 
 users = ["Tanzim", "Iftekhar"] # add more values here if there are more users
 
+
+# Load all trained data filenames 
 trained_array = []
 trained_array = users[:]
 
@@ -29,37 +31,21 @@ i = 0
 
 tolerance = 1
 
+
+# Initialize camera object
 camera = picamera.PiCamera()
 camera.resolution = (640, 480)
 output = np.empty((480, 640, 3), dtype=np.uint8)
 
-while i <= (len(trained_array) - 1):
-    j = 0
-    while j <= (len(trained_array[i]) - 1):
-        directory = "trained_data_user{0}/".format(i+1)
-        trained_array[i][j] = trained_array[i][j].replace(directory, "")
-        j += 1
-    i += 1
-
-j = 0
-i = 0
-
-while i <= (len(trained_array) - 1):
-    j = 0
-    while j <= (len(trained_array[i]) - 1):
-        directory = "trained_data_user{0}/".format(i+1)
-        trained_array[i][j] = directory + trained_array[i][j]
-        j += 1
-    i += 1
-i = 0 
-j = 0
-
+# Initialize all arrays
 t = []
 encoding = []
 
 t = trained_array[:]
 encoding = trained_array[:]
 
+
+# Open all encoding files
 i = 0
 while i <= (len(trained_array) - 1):
     j = 0
@@ -72,19 +58,19 @@ while i <= (len(trained_array) - 1):
     i += 1
 i = 0
 
-known_faces = encoding[:]
+known_faces = encoding[:]		# Initialize Known faces array
 
 while True:
     face_locations = []
     unknown_face_encoding = []
 
-    camera.capture(output, format="bgr")
-    frame = cv2.resize(output, (0, 0), fx=resize, fy=resize)
-    unknown_image = frame[...,::-1]
+    camera.capture(output, format="bgr")		# capture an image frame from video stream
+    frame = cv2.resize(output, (0, 0), fx=resize, fy=resize)		# resize the captured frame
+    unknown_image = frame[...,::-1]			# convert bgr to rgb
     print("\nNew Image Loaded")
     print("\nProcessing...")
     try:
-        face_locations = face_recognition.face_locations(unknown_image)
+        face_locations = face_recognition.face_locations(unknown_image)		# Detect faces on the frame
         unknown_face_encoding = face_recognition.face_encodings(unknown_image, face_locations)
     except IndexError:
         print("I wasn't able to locate any faces in at least one of the images. Check the image files. Aborting...")
@@ -112,7 +98,7 @@ while True:
         known_len = 0
         print("Face number {0} :".format(test_var+1))
         while known_len <= (len(known_faces) - 1):
-            results = face_recognition.compare_faces(known_faces[known_len], unknown_face_encoding[test_var])
+            results = face_recognition.compare_faces(known_faces[known_len], unknown_face_encoding[test_var])			# Compare faces in the frame with the known faces previously trained
             print(results)
             i = 0
             k = 0
@@ -142,12 +128,12 @@ while True:
     face_len = 0
     print("Drawing rectangles on faces...\n")
     while face_len <= len(face_locations) - 1:
-        cv2.rectangle(output, (face_locations[face_len][3]*r_mul, face_locations[face_len][0]*r_mul), (face_locations[face_len][1]*r_mul, face_locations[face_len][2]*r_mul), (0, 255, 0), 2)
+        cv2.rectangle(output, (face_locations[face_len][3]*r_mul, face_locations[face_len][0]*r_mul), (face_locations[face_len][1]*r_mul, face_locations[face_len][2]*r_mul), (0, 255, 0), 2)		# Draw rectangle around faces
         if recog[face_len] == 1:
-            cv2.putText(output, det_users[face_len], (face_locations[face_len][3]*r_mul, (face_locations[face_len][2]*r_mul + 20)), font, 0.8, (0,255,2), 2)
+            cv2.putText(output, det_users[face_len], (face_locations[face_len][3]*r_mul, (face_locations[face_len][2]*r_mul + 20)), font, 0.8, (0,255,2), 2)		# Put names of detected faces below the corresponding rectangle
         face_len += 1
     print("Completed!\n")
-    cv2.imshow("Faces found", output)
+    cv2.imshow("Faces found", output)		#Display the image
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 cv2.destroyAllWindows()
