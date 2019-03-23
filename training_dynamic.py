@@ -4,6 +4,7 @@ import sys
 import os
 import glob
 
+# Load all training images filenames
 path = sorted(os.listdir('.'))
 direct = path[:]
 
@@ -42,16 +43,15 @@ while i <= (len(direct) - 1):
     i += 1
 
 print("loaded\n")
+
+# Initialize all arrays
 loaded_img = load_img[:]
-
 encoded_img = load_img[:]
-
 face_img = load_img[:]
-
 f = load_img[:]
-
 counter = 0
 
+# Load each image into an array
 i = 0
 
 while i <= (len(load_img) - 1):
@@ -64,6 +64,7 @@ while i <= (len(load_img) - 1):
 print("Training images loaded\n")
 print("Encoding...\n")
 
+# Recognize faces and encode them into separate arrays for each image
 try:
     i = 0
     
@@ -86,6 +87,8 @@ except IndexError:
     print("I wasn't able to locate any faces in at least one of the images. Check the image files. Aborting...")
     quit()
 
+	
+#Save the encoding into separate files
 print("Creating training files...\n")
 
 i = 0
